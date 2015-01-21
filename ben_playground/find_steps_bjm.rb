@@ -69,6 +69,9 @@ end
 
 puts steps_to_ea(Complex(3,-2),Complex(2,1))
 
+#puts steps_to_ea(Complex(135,-14),Complex(155,34))
+puts steps_to_ea(Complex(155,34),Complex(135,-14))
+
 #puts complex_divide(Complex(3,-2),Complex(2,1))
 #puts Complex(3,-2) - Complex(3,-1)
 
