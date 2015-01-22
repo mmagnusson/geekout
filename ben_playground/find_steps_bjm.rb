@@ -3,19 +3,28 @@ def split_string(string)
 	string.split(/(\+|\-)/).reject{ |c| c.empty? }
 end
 
-def first_number(arr)
+def first_number(arr)	
 	if arr[0] == "-"
-		return ((arr[1][0].to_f / arr[1][2].to_f)*(-1.0)).round.to_i
+		number = arr[1].split(/\//)
+		divided = number[0].to_f
+		divider = number[-1].to_f
+		return ((divided / divider)*(-1.0)).round.to_i
 	else
-		(arr[0][0].to_f / arr[0][2].to_f).round.to_i
+		number = arr[0].split(/\//)
+		divided = number[0].to_f
+		divider = number[-1].to_f
+		return (divided / divider).round.to_i
 	end
 end
 
 def second_number(arr)
+	number = arr[1].split(/\//)
+	divided = number[0].to_f
+	divider = number[-1].to_f
 	if arr[0] == "+"
-		return (arr[1][0].to_f / arr[1][2].to_f).round.to_i
+		return (divided/divider).round.to_i
 	else
-		return ((arr[1][0].to_f / arr[1][2].to_f)*(-1.0)).round.to_i
+		return ((divided/divider)*(-1.0)).round.to_i
 	end
 end
 
@@ -67,10 +76,11 @@ end
 
 #puts string_to_rounded_complex_number(complex_to_string(complex_divide(Complex(3,-2), Complex(2,1))))
 
-puts steps_to_ea(Complex(3,-2),Complex(2,1))
+#puts steps_to_ea(Complex(3,-2),Complex(2,1))
 
 #puts steps_to_ea(Complex(135,-14),Complex(155,34))
-puts steps_to_ea(Complex(155,34),Complex(135,-14))
+puts steps_to_ea(Complex(-155,34),Complex(135,-14))
+#puts split_string(complex_to_string(complex_divide(Complex(-155,34),Complex(135,-14))))
 
 #puts complex_divide(Complex(3,-2),Complex(2,1))
 #puts Complex(3,-2) - Complex(3,-1)
