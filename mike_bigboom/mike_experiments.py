@@ -1,7 +1,9 @@
 #! /usr/bin/env/python3
 
-#import cmath
-#import csv
+import cmath
+import math
+import csv
+from functions import steps_to_ea, create_complex_number_list_from_csv, complex_divide
 
 #figure out process for setting comp1 & 2 from csv values
 
@@ -11,36 +13,31 @@
 #complex_1 = complex(155, 34)
 #complex_2 = complex(135, -14)
 
-#simpler test values
-complex_1 = complex(4, 4)
-complex_2 = complex(2, 2)
 
+# parsing csv data and creating a list with sub-lists for each complex number pairing
 
-def steps_to_ea(complex_1, complex_2):
-	count = 0
-	remainder = None
+#paths to csv files
+basepath = '/Users/mike/repos/geekout_main/mike_bigboom/'
+#datapath = 'NormTermOrder251000.csv'
+#datapath = 'NormTermOrder10000.csv'
+filepath = 'test.csv'
+full_filepath = basepath + filepath
 
-	while remainder != 0:
-		print("%%%%%%%%%%%%%%")
-		print("Iteration number is " + str(int(count + 1)))
-		print("Current remainder (first iteration it should be nil)" + str(remainder))
-		print("Current 1st number is " + str(complex_1))
-		print("Current 2nd number is " + str(complex_2))
-		print("All math/assignment for this iteration will now happen")
-		print("$$$$$$$$$$$$$$$$")
+complex_number_list = create_complex_number_list_from_csv(full_filepath)
 
-		divided = complex_1 / complex_2
-		remainder = complex_1 - complex(int(divided.real),int(divided.imag)) * complex_2
+#I now have a Py list of complex numbers in NormTerm order
+#in order to keep the index of the CSV consistent with the python array index, I inserted a dummy complex number 0+0j at position 0
+#now using complex_number_list[1] will actually return the first number in the CSV
 
-		complex_1=complex_2
-		complex_2=remainder
+complex_1 = complex_number_list[1]
+complex_2 = complex_number_list[2]
 
-		count+=1
-
-	print("The method has identified the remainder as 0. The number of steps is:" + str(count))
-
+#here is the main step-finding logic
 
 print(steps_to_ea(complex_1,complex_2))
+
+
+
 
 
 #comes to (135 - 34i)/(144 + 14i) = 1.11 + 0.37i (approximately)
