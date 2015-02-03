@@ -1,7 +1,8 @@
 #python3
 import math
+import csv
 
-
+#REWRITE THIS PIECE OF SHIT CODE.
 #oh my god this is disgusting.
 def float_complex_to_rounded_complex_number(complex_to_change):
 	if complex_to_change.real < 1:
@@ -23,7 +24,7 @@ def float_complex_to_rounded_complex_number(complex_to_change):
 
 
 def complex_divide(complex_1, complex_2):
-	return complex_1 / complex_2
+	return (complex_1 / complex_2)
 
 
 def complex_remainder(complex_1, complex_2):
@@ -40,7 +41,7 @@ def create_complex_number_list_from_csv(full_filepath):
 		complex_number_list.append(complex_number)
 	#in order to keep the index of the CSV consistent with the python array index, I inserted a dummy complex number 0+0j at position 0
 	#now using complex_number_list[1] will actually return the first number in the CSV	
-	complex_number_list.insert(0, complex(0,0))	
+	#complex_number_list.insert(0, complex(0,0))	
 	return complex_number_list
 
 #main function for steps
@@ -59,13 +60,13 @@ def steps_to_ea(complex_1, complex_2):
 
 
 		divided = complex_divide(complex_1, complex_2)
-		remainder = complex_1 - float_complex_to_rounded_complex_number(divided) * complex_2
+		remainder = complex_1 - (float_complex_to_rounded_complex_number(divided))*complex_2
 
 		print(divided.real)
 		print(divided.imag)
-		print(Complex(divided.real, divided.imag))
+		print(complex(divided.real, divided.imag))
 
-		remainder = complex_1 - complex(divided.real, divided.imag) * complex_2 
+		#remainder = complex_1 - complex(divided.real, divided.imag) * complex_2 
 
 		complex_1=complex_2
 		complex_2=remainder

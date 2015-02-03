@@ -3,7 +3,7 @@
 import cmath
 import math
 import csv
-from functions import steps_to_ea, create_complex_number_list_from_csv, complex_divide
+from functions import steps_to_ea, create_complex_number_list_from_csv
 
 #figure out process for setting comp1 & 2 from csv values
 
@@ -25,17 +25,17 @@ full_filepath = basepath + filepath
 
 complex_number_list = create_complex_number_list_from_csv(full_filepath)
 
+
 #I now have a Py list of complex numbers in NormTerm order
 #in order to keep the index of the CSV consistent with the python array index, I inserted a dummy complex number 0+0j at position 0
 #now using complex_number_list[1] will actually return the first number in the CSV
 
-complex_1 = complex_number_list[1]
-complex_2 = complex_number_list[2]
-
-#here is the main step-finding logic
-
-print(steps_to_ea(complex_1,complex_2))
-
+index = 0
+for number in complex_number_list: 
+	complex_1 = complex_number_list[index]
+	complex_2 = complex_number_list[index + 1]
+	print(steps_to_ea(complex_1,complex_2))
+	index += 1
 
 
 
